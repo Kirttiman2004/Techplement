@@ -68,7 +68,7 @@ public class CurrencyConverter {
             System.out.print("Enter the amount to convert: ");
             double amount = scanner.nextDouble();
 
-            String apiKey = "9a139f16b3db11d46b1836a943cd30a7"; // Your provided API key
+            String apiKey = "https://api.currencyapi.com/v3/latest?apikey=cur_live_LG8KnU0E31ieTaDVtFNto6rroIQoQ8C4vdqKUoSI"; // Your provided API key
             String result = convertCurrency(fromCurrency, toCurrency, amount, apiKey);
             System.out.println(result);
         } catch (Exception e) {
@@ -77,15 +77,14 @@ public class CurrencyConverter {
     }
 
     public static String convertCurrency(String fromCurrency, String toCurrency, double amount, String apiKey) throws Exception {
-        String host = "currency-conversion-and-exchange-rates.p.rapidapi.com";
-        String endpoint = "convert";
 
-        String url = String.format("https://%s/%s?from=%s&to=%s&amount=%.2f", host, endpoint, fromCurrency, toCurrency, amount);
+
+        String url = "https://rapidapi.com/solutionsbynotnull/api/currency-converter18/";
 
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://currency-conversion-and-exchange-rates.p.rapidapi.com/latest?from=USD&to=EUR%2CGBP"))
+                .uri(URI.create("https://currency-converter18.p.rapidapi.com/api/v1/convert?from=%3CREQUIRED%3E&to=%3CREQUIRED%3E&amount=10"))
                 .header("X-RapidAPI-Key", "33f84e45f5msh5dbe8a2dae4298cp1548f7jsn93fec4f31c0a")
-                .header("X-RapidAPI-Host", "currency-conversion-and-exchange-rates.p.rapidapi.com")
+                .header("X-RapidAPI-Host", "currency-converter18.p.rapidapi.com")
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
